@@ -1,12 +1,9 @@
-import Moment            from "react-moment";
-import { Link }          from "react-router-dom";
+import Moment         from "react-moment";
+import { Link }       from "react-router-dom";
+import { IInterview } from "../Models/IInterview";
 import './interviewList.css';
-import { IInterview }    from "../Models/IInterview";
-import { GET_INTERVIEW } from "../Utils/ApiHandler";
 // @ts-ignore
 const InterviewList = ( { interviews , title } ) => {
-    
-   
     
     return (
         <div className="interview-list">

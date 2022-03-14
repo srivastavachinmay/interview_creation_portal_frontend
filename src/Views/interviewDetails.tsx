@@ -40,43 +40,38 @@ const InterviewDetails = () => {
                 <div>
                     <h1>Interview Details</h1>
                     <h2>id: {id}</h2>
-                    <br/>
                     <h4>
                         Date: <Moment format="DD-MM-YYYY">{
-                        // @ts-ignore
                         interview.startDateTime}</Moment>
                     </h4>
                     <h4>
                         Timings: <Moment format="hh:mm A">{
-                        // @ts-ignore
+                      
                         interview.startDateTime}</Moment> -{" "}
                         <Moment format="hh:mm A">{
-                            // @ts-ignore
                             interview.endDateTime}</Moment>
                     </h4>
-                    <br/>
                     <h4>Participants</h4>
                     <ul>
                         <h4>Candidates</h4>
-                        {// @ts-ignore
-        
+                        {
                             <ul>
                                 {
                                     interview.participants.filter(( d ) => d.type === 'Candidate').map(
                                         ( participant, idx ) => (
-                                            <li>{participant.email}</li>
+                                            <li>Name: {participant.name}  <br/> Email: {participant.email} <br/> <br/> </li>
+                                            
                                         ))
                                 }
                             </ul>
                         }
                         <h4>Interviewers</h4>
-                        {// @ts-ignore
-        
+                        {
                             <ul>
                                 {
                                     interview.participants.filter(( d ) => d.type === 'Interviewer').map(
                                         ( participant, idx ) => (
-                                            <li>{participant.email}</li>
+                                            <li>Name: {participant.name}  <br/> Email: {participant.email} <br/> <br/> </li>
                                         ))
                                 }
                             </ul>

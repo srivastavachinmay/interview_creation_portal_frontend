@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import DateTimePicker                     from "react-datetime-picker";
-import ReactLoading from "react-loading";
+import ReactLoading                       from "react-loading";
 import { useNavigate }                    from "react-router-dom";
 import Select                             from "react-select";
 import makeAnimated                       from "react-select/animated";
@@ -14,9 +14,8 @@ const ScheduleInterview = () => {
     
     const [candidateData, setCandidateData] = useState<IParticipant[]>([]);
     const [interviewerData, setInterviewerData] = useState<IParticipant[]>([]);
-    const [isPending,setIsPending] = useState<boolean>(true)
+    const [isPending,setIsPending] = useState<boolean>(false)
     const animatedComponents = makeAnimated();
-    const [date, setDate] = useState<any>(new Date());
     const [startTime, setStartTime] = useState<any>(new Date());
     const [endTime, setEndTime] = useState<any>(new Date());
     const [candidates, setCandidates] = useState<String[]>([]);
@@ -66,6 +65,7 @@ const ScheduleInterview = () => {
         };
         console.log(interview);
     
+        setIsPending(false);
         fetch(`${PUT_INTERVIEW}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -101,20 +101,13 @@ const ScheduleInterview = () => {
             <div className="create">
                 <h1>Schedule a new interview</h1>
                 <br/>
-                {/*{( candidateDataError || interviewerDataError ) && (*/}
-                {/*    <h2>Unable to fetch participants information</h2>*/}
-                {/*)}*/}
                 {( isPending ) && (
                     <ReactLoading type={"spin"} className={'loading'} color={'#ECECEC'}/>
                 )}
-                {
-                    candidateData && interviewerData &&
-                    (
-                        <>
-                        
-                        
+                {candidateData && interviewerData &&
+                    ( <>
                             <form onSubmit={handleSubmit}>
-                            
+                    
                                 <label>Start Time :</label>
                                 <DateTimePicker minDate={new Date()} onChange={setStartTime}
                                                 value={startTime}/>

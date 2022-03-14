@@ -123,25 +123,40 @@ const RescheduleInterview = () => {
                         <h4>
                             Date:{" "}
                             <Moment format="DD-MM-YYYY">{
-                                // @ts-ignore
-                                interviewData.startDateTime}</Moment>
+                                interviewData.startDateTime}
+                            </Moment>
                         </h4>
                         <h4>
                             Timings:{" "}
                             <Moment format="hh:mm A">{
-                                // @ts-ignore
                                 interviewData.startDateTime}</Moment> -{" "}
                             <Moment format="hh:mm A">{
-                                // @ts-ignore
                                 interviewData.endDateTime}</Moment>
                         </h4>
                         <h4>Participants</h4>
                         <ul>
+                            <h4>Candidates</h4>
                             {
-                                // @ts-ignore
-                                interviewData.participants.map(( participant, idx ) => (
-                                    <li>{participant.email}</li>
-                                ))}
+                                <ul>
+                                    {
+                                        interviewData.participants.filter(( d ) => d.type === 'Candidate').map(
+                                            ( participant, idx ) => (
+                                                <li>Name: {participant.name}  <br/> Email: {participant.email} <br/> <br/> </li>
+                                            ))
+                                    }
+                                </ul>
+                            }
+                            <h4>Interviewers</h4>
+                            {
+                                <ul>
+                                    {
+                                        interviewData.participants.filter(( d ) => d.type === 'Interviewer').map(
+                                            ( participant, idx ) => (
+                                                <li>Name: {participant.name}  <br/> Email: {participant.email} <br/> <br/> </li>
+                                            ))
+                                    }
+                                </ul>
+                            }
                         </ul>
                     </div>
                     <form onSubmit={handleSubmit}>
