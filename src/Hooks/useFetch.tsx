@@ -1,3 +1,4 @@
+import axios                   from "axios";
 import { useEffect, useState } from "react";
 
 const useFetch = ( url: string ) => {
@@ -7,14 +8,16 @@ const useFetch = ( url: string ) => {
     
     useEffect(() => {
         const abortController = new AbortController();
-        fetch(url, { signal: abortController.signal })
+        axios.get(url,{signal:abortController.signal})
+        // fetch(url, { method:"GET",signal: abortController.signal })
             .then(( res ) => {
-                if(!res.ok )
-                    throw new Error(`Unable to fetch data. Status Code: ${res.status}`);
-                return res.json();
+                let status=res.status
+                if(!res)
+                    throw new Error(`Unable to fetch data. Status Code: ${status}`);
+                return res.data;
             })
             .then(( data ) => {
-                setData(data.data);
+                setData(data);
                 setIsPending(false);
                 setError(null);
             })

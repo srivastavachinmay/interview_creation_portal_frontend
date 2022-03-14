@@ -1,21 +1,41 @@
-import ReactLoading      from "react-loading";
-import InterviewList     from "../Components/interviewList";
-import useFetch          from "../Hooks/useFetch";
+import { useEffect, useState } from "react";
+import ReactLoading            from "react-loading";
+import { getInterviews }       from "../Axios/Interviews";
+import InterviewList           from "../Components/interviewList";
+import { IInterview }          from "../Models/IInterview";
 import './Home.css';
-import { getInterviews } from "../Utils/ApiHandler";
 
 export default function Home() {
-    const {
-              data : interviews,
-              isPending,
-              error,
-          } = useFetch(`${getInterviews}`);
     
+    const [interviews,setInterviews]=useState<IInterview[]>([]);
+    const [error,setError] =useState<any>(null)
+    const [isPending,setIsPending] =useState<boolean>(true)
+    // const {
+    //           data.interviews: interviews,
+    //           isPending,
+    //           error,
+    //       } = useFetch(`${GET_INTERVIEW}`);
+    
+    useEffect(() => {
+        ( async () => {
+            const data = await getInterviews();
+            if(!data) {
+                // TODO: SHOW ERROR
+                setError(data)
+                return;
+            }
+            setIsPending(false);
+            
+            setInterviews(data)
+        } )();
+        
+    }, []);
     return (
         <div className="home">
+            {}
             {error && <h3>Unable to fetch interviews</h3>}
             {isPending &&
-                <ReactLoading type={"spin"} className={'loading'} color={'#ECECEC'}/>
+                <ReactLoading type={"spin"} className={'loading'} color={'#000'}/>
             }
             
             {// @ts-ignore

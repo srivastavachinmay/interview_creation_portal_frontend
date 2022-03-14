@@ -2,34 +2,11 @@ import Moment            from "react-moment";
 import { Link }          from "react-router-dom";
 import './interviewList.css';
 import { IInterview }    from "../Models/IInterview";
-import { getInterviews } from "../Utils/ApiHandler";
+import { GET_INTERVIEW } from "../Utils/ApiHandler";
 // @ts-ignore
 const InterviewList = ( { interviews , title } ) => {
     
-    const handleDelete = ( uuid: number | undefined) => {
-        fetch(`${getInterviews}${uuid}`, {
-            method: "DELETE",
-        })
-            .then(( res ) => {
-                if(res.ok) {
-                    return res.json();
-                }
-                return res.text().then(( text ) => {
-                    throw new Error(text);
-                });
-            })
-            .then(( data ) => {
-                console.log(data);
-                console.log("Successfully deleted interview");
-                alert("Successfully deleted Interview");
-                window.location.reload();
-            })
-            .catch(( err ) => {
-                const data = JSON.parse(err.message);
-                alert(data.message);
-                console.log(err);
-            });
-    };
+   
     
     return (
         <div className="interview-list">
@@ -62,16 +39,9 @@ const InterviewList = ( { interviews , title } ) => {
                             pathname: `/reschedule/${interview.id}`,
                         }}
                     >
-                        <button className="green-btn">Reschedule or Edit</button>
+                        <button className="green-btn">Reschedule</button>
                     </Link>
-                    <button
-                        className="red-btn"
-                        onClick={() => {
-                            handleDelete(interview.id);
-                        }}
-                    >
-                        Delete
-                    </button>
+                   
                 </div>
             ))}
         </div>

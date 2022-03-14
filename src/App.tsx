@@ -14,8 +14,8 @@ export default function App() {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/schedule" element={<ScheduleInterview/>}/>
-            <Route path="/interview/:uuid" element={<InterviewDetails/>}/>
-            <Route path="/reschedule/:uuid" element={<RescheduleInterview/>}/>
+            <Route path="/interview/:id" element={<InterviewDetails/>}/>
+            <Route path="/reschedule/:id" element={<RescheduleInterview/>}/>
         
         </Routes>
     

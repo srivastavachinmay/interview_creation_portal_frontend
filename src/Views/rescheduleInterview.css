@@ -1,34 +1,32 @@
 
-.create {
+.creates {
     max-width: 700px;
     margin: 0 auto;
 }
 
-.create label {
+.creates label {
     text-align: left;
     margin-bottom: 5px;
     margin-top: 15px;
     display: block;
 }
 
-.create h2 {
+.creates h2 {
     font-size: 20px;
     color: #D82148;
     margin-bottom: 30px;
 }
 
-.create input,
-.create textarea,
-.create select {
-    width: 100%;
+.creates input,
+.creates textarea,
+.creates select {
+    width: 100px;
+
     padding: 6px 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    box-sizing: border-box;
-    display: block;
+    margin: 1px 0;
 }
 
-.create button {
+.creates button {
     background: #F0A500;
     margin-top: 20px;
     color: #fff;
