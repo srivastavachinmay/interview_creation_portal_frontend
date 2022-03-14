@@ -1,0 +1,30 @@
+.navbar {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    max-width: 90vw;
+    margin: 0 auto;
+    border-bottom: 1px solid #f2f2f2;
+
+}
+
+.navbar h1 {
+    color: #000;
+    /*text-align: center;*/
+}
+
+.navbar .links {
+    margin-left: auto;
+}
+
+.navbar a {
+    margin-left: 16px;
+    text-decoration: none;
+    padding: 6px;
+}
+
+.red-btn {
+    color: #000000;
+    background-color: #F1C40F;
+    border-radius: 6px;
+}

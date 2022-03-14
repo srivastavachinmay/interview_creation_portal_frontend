@@ -1,0 +1,39 @@
+
+.create {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.create label {
+    text-align: left;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    display: block;
+}
+
+.create h2 {
+    font-size: 20px;
+    color: #D82148;
+    margin-bottom: 30px;
+}
+
+.create input,
+.create textarea,
+.create select {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
+}
+
+.create button {
+    background: #F0A500;
+    margin-top: 20px;
+    color: #fff;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}

@@ -1,0 +1,9 @@
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.home h3 {
+    text-align: center;
+    color: #000;
+}
